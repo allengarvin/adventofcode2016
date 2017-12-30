@@ -1,6 +1,5 @@
-Answer 1: 10010010110011010
-Answer 1: 01010100101011100
+Usage: ./17-advent.py salt
 
-real	0m12.187s
-user	0m10.280s
-sys	0m1.616s
+real	0m0.020s
+user	0m0.012s
+sys	0m0.004s
