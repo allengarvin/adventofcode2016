@@ -1,5 +1,6 @@
-Usage: ./17-advent.py salt
+Answer 1: DDRLRRUDDR
+Answer 2: 556
 
-real	0m0.020s
-user	0m0.012s
+real	0m0.226s
+user	0m0.216s
 sys	0m0.004s
