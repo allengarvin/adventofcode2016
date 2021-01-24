@@ -2,6 +2,7 @@
 
 import sys, argparse, operator, re
 from parse import parse
+import numpy as np
 
 def display(grid):
     cnt = 0
@@ -14,8 +15,7 @@ def display(grid):
 
 def main(args):
     maxx, maxy = 50, 6
-    grid = [[0] * maxx for _ in range(maxy)]
-
+    grid = np.zeros((maxy,maxx), dtype=int)
 
     instructions = []
     for line in open(args.file):
@@ -25,13 +25,9 @@ def main(args):
                 for y in range(b):
                     grid[y][x] = 1
         if "rotate row" in line:
-            grid[a] = grid[a][-b:] + grid[a][:-b]
+            grid[a,:] = np.concatenate((grid[a,:][-b:], grid[a,:][:-b]))
         if "rotate column" in line:
-            col = [grid[i][a] for i in range(maxy)]
-            col = col[-b:] + col[:-b]
-            for i, n in enumerate(col):
-                grid[i][a] = col[i]
-
+            grid[:,a] = np.concatenate((grid[:,a][-b:], grid[:,a][:-b]))
     
     cnt, txt = display(grid)
     print("Part 1:", cnt, "\nPart 2:")
