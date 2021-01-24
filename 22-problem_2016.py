@@ -17,11 +17,11 @@ def main(args):
         d = re.findall("[0-9]+", line)
         if not d:
             continue
-        x, y, size, used, avail, _ = [int(x) for x in d]
+        x, y, *d, _ = [int(x) for x in d]
         pos = Position(x + y * 1j)
-        grid[pos] = [size, used, avail]
+        grid[pos] = d
         maxx = max(x, maxx)
-        if used == 0:
+        if d[1] == 0:
             empty = pos
 
     total = 0
